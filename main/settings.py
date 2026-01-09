@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'students',
     'apis',
     'employee',
+    'blogs',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#default pagination added .
+REST_FRAMEWORK ={
+    #'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    #'PAGE_SIZE':1,(when are you use filter then remove this its override your filter)
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    'SEARCH_PARAM' : 'q',
+}
+
+# to add custome pagination by adding pagination file in particular app like employee .  
